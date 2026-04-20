@@ -39,11 +39,19 @@ let
           run = ''xdg-open "$@"'';
           for = "linux";
         }
+        {
+          run = ''open "$@"'';
+          for = "macos";
+        }
       ];
       reveal = [
         {
           run = ''xdg-open "$(dirname "$0")"'';
           for = "linux";
+        }
+        {
+          run = ''open -R "$1"'';
+          for = "macos";
         }
       ];
       extract = [
