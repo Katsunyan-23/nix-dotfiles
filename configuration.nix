@@ -139,38 +139,9 @@
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
 
-  # List packages installed in system profile. To search, run:
-  # $ nix search wget
+  # Profile-specific packages (shared packages are in modules/packages/common.nix)
   environment.systemPackages = with pkgs; [
-    vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
-    helix
-
-    git
-    lazygit
-
-    eza
-    yazi
-
-    rustup
-
-    go
-    gopls # LSP
-    delve # Debugger
-    gotools # Formatter
-    golangci-lint # Linter
-    # golangci-lint-langserver is also in nixpkgs
-    golangci-lint-langserver
-
     kitty
-
-    wget
-
-    # Nix lsp and stuffs
-    nil
-    nixfmt
-
-    zsh
-
   ];
 
   fonts.packages = with pkgs; [

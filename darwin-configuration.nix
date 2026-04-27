@@ -1,32 +1,8 @@
 { pkgs, ... }:
 
 {
+  # Profile-specific packages (shared packages are in modules/packages/common.nix)
   environment.systemPackages = with pkgs; [
-    vim
-    helix
-
-    git
-    lazygit
-
-    eza
-    yazi
-
-    rustup
-
-    go
-    gopls
-    delve
-    gotools
-    golangci-lint
-    golangci-lint-langserver
-
-    wget
-
-    nil
-    nixfmt
-
-    zsh
-
     (writeShellScriptBin "rebuild" ''
       exec darwin-rebuild switch --flake ".#''${1:-home-mac}"
     '')
