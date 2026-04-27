@@ -86,6 +86,18 @@ let
         scrolloff: 3,
         enable_mouse: true,
         status_update_interval_ms: 1000,
+        album_art: (
+            method: Kitty,
+            max_size_px: (width: 1200, height: 1200),
+            disabled_protocols: ["http://", "https://"],
+            vertical_align: Center,
+            horizontal_align: Center,
+        ),
+        keybinds: (
+            global: {
+                "r": Rescan,
+            },
+        ),
     )
   '';
 in

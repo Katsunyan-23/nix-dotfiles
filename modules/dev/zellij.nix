@@ -2,6 +2,8 @@
 
 let
   zellijConfig = pkgs.writeText "config.kdl" ''
+    passthrough_escape_codes true
+
     theme "tokyo-night"
 
     themes {
@@ -27,7 +29,7 @@ in
 
   programs.zsh.interactiveShellInit = ''
     if [[ -z "$ZELLIJ" ]]; then
-      exec ${pkgs.zellij}/bin/zellij
+      ${pkgs.zellij}/bin/zellij
     fi
   '';
 }

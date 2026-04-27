@@ -1,10 +1,16 @@
-{ pkgs, lib, config, ... }:
+{
+  pkgs,
+  lib,
+  config,
+  ...
+}:
 let
   user = config.system.primaryUser;
   home = "/Users/${user}";
 
   mpdConf = pkgs.writeText "mpd.conf" ''
     music_directory    "~/Music"
+    playlist_directory "~/.local/share/mpd/playlists"
     db_file            "~/.local/share/mpd/database"
     log_file           "~/.local/share/mpd/log"
     pid_file           "~/.local/share/mpd/pid"
@@ -24,12 +30,18 @@ in
 
   system.activationScripts.postActivation.text = lib.mkAfter ''
     sudo -u ${user} mkdir -p ${home}/.local/share/mpd
+    sudo -u ${user} mkdir -p ${home}/.local/share/mpd/playlists
     sudo -u ${user} mkdir -p ${home}/Music
   '';
 
   launchd.user.agents.mpd = {
     serviceConfig = {
-      ProgramArguments = [ "${pkgs.mpd}/bin/mpd" "--no-daemon" "--stderr" "${mpdConf}" ];
+      ProgramArguments = [
+        "${pkgs.mpd}/bin/mpd"
+        "--no-daemon"
+        "--stderr"
+        "${mpdConf}"
+      ];
       KeepAlive = true;
       RunAtLoad = true;
       StandardOutPath = "/tmp/mpd.log";

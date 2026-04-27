@@ -24,9 +24,12 @@
         modules = [
           ./configuration.nix
           ./hardware-configuration.nix
+          ./modules/packages/common.nix
           ./modules/dev/helix.nix
           ./modules/dev/kitty.nix
           ./modules/dev/zellij.nix
+          ./modules/dev/rmpc.nix
+          ./modules/dev/mpd.nix
           homix.nixosModules.default
         ];
       };
@@ -35,12 +38,15 @@
         system = "aarch64-darwin";
         modules = [
           ./darwin-configuration.nix
+          ./modules/packages/common.nix
           ./modules/darwin-homix.nix
           ./modules/dev/helix.nix
           ./modules/dev/kitty.nix
           ./modules/dev/yazi.nix
           ./modules/dev/zellij.nix
           ./modules/dev/hammerspoon.nix
+          ./modules/dev/rmpc.nix
+          ./modules/dev/mpd-darwin.nix
           nix-homebrew.darwinModules.nix-homebrew
         ];
       };
