@@ -26,6 +26,7 @@
           ./hardware-configuration.nix
           ./modules/dev/helix.nix
           ./modules/dev/kitty.nix
+          ./modules/dev/zellij.nix
           homix.nixosModules.default
         ];
       };
@@ -38,6 +39,7 @@
           ./modules/dev/helix.nix
           ./modules/dev/kitty.nix
           ./modules/dev/yazi.nix
+          ./modules/dev/zellij.nix
           ./modules/dev/hammerspoon.nix
           nix-homebrew.darwinModules.nix-homebrew
         ];
