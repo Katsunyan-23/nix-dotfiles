@@ -19,9 +19,14 @@ let
     bind_to_address    "127.0.0.1"
     port               "6600"
 
+    log_level "verbose"
+
     audio_output {
-      type    "osx"
-      name    "CoreAudio"
+      type    "pipe"
+      name    "CoreAudio via pipe"
+      command "${pkgs.sox}/bin/sox -t raw -r 48000 -e signed-integer -b 16 -c 2 - -d"
+      format  "48000:16:2"
+      mixer_type  "software"
     }
   '';
 in

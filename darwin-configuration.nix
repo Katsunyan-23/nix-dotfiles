@@ -3,6 +3,9 @@
 {
   # Profile-specific packages (shared packages are in modules/packages/common.nix)
   environment.systemPackages = with pkgs; [
+    ffmpeg
+    sox
+
     (writeShellScriptBin "rebuild" ''
       exec darwin-rebuild switch --flake ".#''${1:-home-mac}"
     '')
