@@ -1,7 +1,7 @@
 { config, lib, pkgs, ... }:
 
 let
-  username = "katsunyan";
+  username = config.system.primaryUser;
   homeDir = "/Users/${username}";
 
   linkLines = lib.mapAttrsToList (
