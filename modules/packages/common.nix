@@ -30,6 +30,10 @@
     rmpc
     mpd
 
+    marksman
+    markdown-oxide
+    ltex-ls-plus
+
     yt-dlp
 
     (writeShellScriptBin "music-dl" ''

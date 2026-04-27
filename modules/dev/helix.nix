@@ -70,6 +70,13 @@ let
         };
         auto-format = true;
       }
+      {
+        name = "markdown";
+        language-servers = [
+          "marksman"
+          "ltex-ls-plus"
+        ];
+      }
     ];
 
     language-server = {
@@ -86,6 +93,18 @@ let
           "--show-stats=false"
           "--issues-exit-code=0"
         ];
+      };
+      ltex-ls-plus = {
+        ltex.ltex-ls.logLevel = "warning";
+        ltex.diagnosticSeverity = "warning";
+        ltex.disabledRules = {
+          "en-US" = [ "PROFANITY" ];
+          "en-GB" = [ "PROFANITY" ];
+        };
+        ltex.dictionary = {
+          "en-US" = [ "builtin" ];
+          "en-GB" = [ "builtin" ];
+        };
       };
     };
   };
