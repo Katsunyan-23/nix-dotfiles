@@ -97,45 +97,6 @@
   # Install firefox.
   programs.firefox.enable = true;
 
-  # Shell
-  programs.zsh = {
-    enable = true;
-
-    histSize = 10000;
-    histFile = "$HOME/.cache/zsh_history";
-
-    setOptions = [
-      "HIST_IGNORE_DUPS"
-      "HIST_IGNORE_SPACE"
-      "SHARE_HISTORY"
-      "AUTO_CD"
-      "CORRECT"
-    ];
-
-    shellAliases = {
-      ls = "ls --color=auto";
-      ll = "ls -lah";
-      ".." = "cd ..";
-    };
-
-    promptInit = ''
-      autoload -Uz vcs_info
-      precmd() { vcs_info }
-      zstyle ':vcs_info:git:*' formats ' (%b)'
-      setopt PROMPT_SUBST
-      PROMPT='%F{blue}%~%f%F{green}''${vcs_info_msg_0_}%f %# '
-    '';
-
-    interactiveShellInit = ''
-      zstyle ':completion:*' menu select
-      zstyle ':completion:*' matcher-list 'm:{a-z}={A-Z}'
-
-      rebuild() {
-        sudo nixos-rebuild switch --flake ".#''${1:-home}"
-      }
-    '';
-  };
-
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
 
@@ -151,12 +112,6 @@
   # Homix stuffs
   # homix.".config/nvim".source = ./nvim;
   # homix.".config/starship.toml".source = ./starship.toml;b
-
-  # Environment setup
-  environment.sessionVariables = {
-    GOPATH = "$HOME/go";
-    PATH = [ "$HOME/go/bin" ];
-  };
 
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.

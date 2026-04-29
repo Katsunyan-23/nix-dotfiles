@@ -30,6 +30,7 @@
           ./modules/dev/zellij.nix
           ./modules/dev/rmpc.nix
           ./modules/dev/mpd.nix
+          ./modules/dev/zsh.nix
           homix.nixosModules.default
         ];
       };
@@ -47,6 +48,7 @@
           ./modules/dev/hammerspoon.nix
           ./modules/dev/rmpc.nix
           ./modules/dev/mpd-darwin.nix
+          ./modules/dev/zsh.nix
           nix-homebrew.darwinModules.nix-homebrew
         ];
       };
